@@ -1,65 +1,112 @@
-import Image from "next/image";
+"use client";
 
-export default function Home() {
+import Link from "next/link";
+import { useRegion } from "@/context/RegionContext";
+import { REGIONS } from "@/data/constants";
+import OutcallStrip from "@/components/OutcallStrip";
+import CtaBanner from "@/components/CtaBanner";
+import HeroSlider from "@/components/HeroSlider";
+import ScrollReveal from "@/components/ScrollReveal";
+import TreatmentCard from "@/components/TreatmentCard";
+import { motion } from "framer-motion";
+
+export default function HomePage() {
+  const { region, TREATMENTS } = useRegion();
+  const r = REGIONS[region];
+
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.js file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+    <div className="page-fade">
+      {/* HERO SLIDER */}
+      <HeroSlider />
+
+      {/* OUTCALL STRIP */}
+      <OutcallStrip />
+
+      {/* ABOUT PREVIEW */}
+      <section className="py-24 px-12 overflow-hidden">
+        <div className="max-w-[1200px] mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-20 items-center">
+            <ScrollReveal>
+              <div>
+                <div className="section-label">About Vita Privita</div>
+                <h2 className="section-title">Where Luxury<br/>Meets <em>Intimacy</em></h2>
+                <p className="section-body">
+                  Vita Privita is a premier outcall massage service offering an exclusive range of erotic and sensual treatments. We bring the highest standard of professional bodywork directly to your home or hotel, throughout {r.location}. Our team of highly trained therapists are masters of discretion, professionalism, and pleasure.
+                </p>
+                
+                <div className="grid grid-cols-2 gap-8 mt-12">
+                  {[
+                    ["8+", "Years Experience"],
+                    ["500+", "Satisfied Clients"],
+                    ["6", "Signature Treatments"],
+                    ["100%", "Discreet Service"]
+                  ].map(([n, l], idx) => (
+                    <motion.div 
+                      key={l}
+                      initial={{ opacity: 0, y: 20 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ delay: 0.2 + idx * 0.1 }}
+                    >
+                      <span className="font-serif text-[3rem] font-light text-purple leading-none block mb-1.5">{n}</span>
+                      <span className="text-[0.65rem] tracking-[0.2em] uppercase text-muted">{l}</span>
+                    </motion.div>
+                  ))}
+                </div>
+                
+                <div className="mt-10">
+                  <Link href="/about" className="btn-outline">Our Story →</Link>
+                </div>
+              </div>
+            </ScrollReveal>
+            
+            <ScrollReveal direction="left">
+              <div className="relative">
+                <div className="w-full aspect-[3/4] overflow-hidden relative rounded-3xl glass-card-purple p-2 group">
+                  <img src="/images/about.png" alt="About Vita Privita" className="w-full h-full object-cover rounded-[1.25rem] opacity-80 group-hover:scale-105 transition-transform duration-1000" />
+                  <div className="absolute inset-5 border border-white/10 rounded-[1rem] pointer-events-none" />
+                </div>
+                <motion.div 
+                  initial={{ scale: 0.8, opacity: 0 }}
+                  whileInView={{ scale: 1, opacity: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.5, type: "spring" }}
+                  className="absolute -bottom-6 -right-6 w-[130px] h-[130px] text-white flex flex-col items-center justify-center text-center text-[0.55rem] tracking-[0.15em] uppercase leading-[1.6] glass-card-purple rounded-full border-purple/30 z-20"
+                >
+                  <strong className="text-[2rem] font-medium block leading-none text-purple">8</strong>
+                  Years of Excellence
+                </motion.div>
+              </div>
+            </ScrollReveal>
+          </div>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+      </section>
+
+      <div className="divider" />
+
+      {/* SERVICES */}
+      <section className="py-24 px-12">
+        <div className="max-w-[1200px] mx-auto">
+          <ScrollReveal>
+            <div className="section-label">Our Treatments</div>
+            <h2 className="section-title">Signature <em>Experiences</em></h2>
+            <p className="section-body mb-16">
+              Every treatment is tailored to your desires and carried out with absolute professionalism. Select a service below to discover more.
+            </p>
+          </ScrollReveal>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {TREATMENTS.map((t, idx) => (
+              <ScrollReveal key={t.id} delay={idx * 0.1}>
+                <TreatmentCard t={t} r={r} index={idx} />
+              </ScrollReveal>
+            ))}
+          </div>
         </div>
-      </main>
+      </section>
+
+      {/* CTA */}
+      <CtaBanner />
     </div>
   );
 }

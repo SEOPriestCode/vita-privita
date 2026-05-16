@@ -1,16 +1,16 @@
 @import "tailwindcss";
 
 @theme {
-  --color-black: #0a0906;
-  --color-deep: #100e0b;
-  --color-surface: #161410;
-  --color-card: #1e1b17;
-  --color-border-gold: rgba(212,175,95,0.18);
-  --color-gold: #d4af5f;
-  --color-gold-light: #e8cb88;
-  --color-gold-dim: rgba(212,175,95,0.35);
-  --color-white: #f5f0e8;
-  --color-muted: rgba(245,240,232,0.5);
+  --color-black: #0f071a;
+  --color-deep: #150a24;
+  --color-surface: #1f0f36;
+  --color-card: #281447;
+  --color-border-purple: rgba(157, 78, 221, 0.25);
+  --color-purple: #a855f7;
+  --color-purple-light: #d8b4fe;
+  --color-purple-dim: rgba(168, 85, 247, 0.35);
+  --color-white: #ffffff;
+  --color-muted: rgba(255, 255, 255, 0.65);
   
   --font-serif: "Cormorant Garamond", Georgia, serif;
   --font-sans: "Jost", sans-serif;
@@ -36,7 +36,7 @@
 
   ::-webkit-scrollbar { width: 4px; }
   ::-webkit-scrollbar-track { background: var(--color-black); }
-  ::-webkit-scrollbar-thumb { background: var(--color-gold-dim); border-radius: 2px; }
+  ::-webkit-scrollbar-thumb { background: var(--color-purple-dim); border-radius: 2px; }
 }
 
 @layer components {
@@ -52,22 +52,22 @@
   .divider {
     width: 100%;
     height: 1px;
-    background: linear-gradient(to right, transparent, var(--color-gold-dim), transparent);
+    background: linear-gradient(to right, transparent, var(--color-purple-dim), transparent);
   }
 
   .section-label {
-    @apply text-[0.6rem] tracking-[0.35em] uppercase text-gold flex items-center gap-4 mb-4;
+    @apply text-[0.6rem] tracking-[0.35em] uppercase text-purple flex items-center gap-4 mb-4;
   }
   .section-label::before {
     content: '';
-    @apply block w-10 h-px bg-gold;
+    @apply block w-10 h-px bg-purple;
   }
 
   .section-title {
     @apply font-serif text-[clamp(2rem,4vw,3.5rem)] font-light leading-[1.15] text-white mb-6;
   }
   .section-title em {
-    @apply italic text-gold;
+    @apply italic text-purple;
   }
 
   .section-body {
@@ -75,16 +75,38 @@
   }
 
   .btn-primary {
-    @apply px-10 py-4 bg-gold text-black font-sans text-[0.7rem] font-medium tracking-[0.2em] uppercase no-underline border-none cursor-pointer inline-block transition-all duration-300;
+    @apply px-10 py-4 bg-purple text-white font-sans text-[0.7rem] font-medium tracking-[0.2em] uppercase no-underline border-none cursor-pointer inline-block transition-all duration-300 rounded-full;
   }
   .btn-primary:hover {
-    @apply bg-gold-light -translate-y-0.5;
+    @apply bg-purple-light text-black -translate-y-0.5;
   }
 
   .btn-outline {
-    @apply px-10 py-4 bg-transparent text-white font-sans text-[0.7rem] font-normal tracking-[0.2em] uppercase no-underline border border-white/30 cursor-pointer inline-block transition-all duration-300;
+    @apply px-10 py-4 bg-transparent text-white font-sans text-[0.7rem] font-normal tracking-[0.2em] uppercase no-underline border border-white/30 cursor-pointer inline-block transition-all duration-300 rounded-full;
   }
   .btn-outline:hover {
     @apply border-white -translate-y-0.5;
+  }
+
+  .glass-card {
+    @apply bg-white/[0.03] backdrop-blur-xl border border-white/10 shadow-[0_8px_32px_0_rgba(0,0,0,0.37)];
+  }
+  
+  .glass-card-purple {
+    @apply bg-purple/[0.05] backdrop-blur-xl border border-purple/20 shadow-[0_8px_32px_0_rgba(168,85,247,0.1)];
+  }
+
+  /* 3D Flip Utilities */
+  .perspective-1000 {
+    perspective: 1000px;
+  }
+  .preserve-3d {
+    transform-style: preserve-3d;
+  }
+  .backface-hidden {
+    backface-visibility: hidden;
+  }
+  .rotate-y-180 {
+    transform: rotateY(180deg);
   }
 }

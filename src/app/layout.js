@@ -1,6 +1,8 @@
 import { RegionProvider } from "@/context/RegionContext";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
+import RegionSelector from "@/components/RegionSelector";
+import Breadcrumbs from "@/components/Breadcrumbs";
 import "./globals.css";
 
 export const metadata = {
@@ -17,10 +19,14 @@ export default function RootLayout({ children }) {
       </head>
       <body className="antialiased font-light text-white bg-black">
         <RegionProvider>
+          <RegionSelector />
           <Nav />
-          <main className="pt-[72px] min-h-screen">
-            {children}
-          </main>
+          <div className="pt-[72px]">
+            <Breadcrumbs />
+            <main className="min-h-screen">
+              {children}
+            </main>
+          </div>
           <Footer />
         </RegionProvider>
       </body>
