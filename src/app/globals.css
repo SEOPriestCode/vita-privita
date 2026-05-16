@@ -1,0 +1,90 @@
+@import "tailwindcss";
+
+@theme {
+  --color-black: #0a0906;
+  --color-deep: #100e0b;
+  --color-surface: #161410;
+  --color-card: #1e1b17;
+  --color-border-gold: rgba(212,175,95,0.18);
+  --color-gold: #d4af5f;
+  --color-gold-light: #e8cb88;
+  --color-gold-dim: rgba(212,175,95,0.35);
+  --color-white: #f5f0e8;
+  --color-muted: rgba(245,240,232,0.5);
+  
+  --font-serif: "Cormorant Garamond", Georgia, serif;
+  --font-sans: "Jost", sans-serif;
+}
+
+@layer base {
+  *, *::before, *::after {
+    box-sizing: border-box;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--color-black);
+    color: var(--color-white);
+    font-family: var(--font-sans);
+    font-weight: 300;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  ::-webkit-scrollbar { width: 4px; }
+  ::-webkit-scrollbar-track { background: var(--color-black); }
+  ::-webkit-scrollbar-thumb { background: var(--color-gold-dim); border-radius: 2px; }
+}
+
+@layer components {
+  .page-fade {
+    animation: pageFadeIn 0.4s ease forwards;
+  }
+  
+  @keyframes pageFadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .divider {
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--color-gold-dim), transparent);
+  }
+
+  .section-label {
+    @apply text-[0.6rem] tracking-[0.35em] uppercase text-gold flex items-center gap-4 mb-4;
+  }
+  .section-label::before {
+    content: '';
+    @apply block w-10 h-px bg-gold;
+  }
+
+  .section-title {
+    @apply font-serif text-[clamp(2rem,4vw,3.5rem)] font-light leading-[1.15] text-white mb-6;
+  }
+  .section-title em {
+    @apply italic text-gold;
+  }
+
+  .section-body {
+    @apply text-sm leading-[1.9] text-muted max-w-[600px];
+  }
+
+  .btn-primary {
+    @apply px-10 py-4 bg-gold text-black font-sans text-[0.7rem] font-medium tracking-[0.2em] uppercase no-underline border-none cursor-pointer inline-block transition-all duration-300;
+  }
+  .btn-primary:hover {
+    @apply bg-gold-light -translate-y-0.5;
+  }
+
+  .btn-outline {
+    @apply px-10 py-4 bg-transparent text-white font-sans text-[0.7rem] font-normal tracking-[0.2em] uppercase no-underline border border-white/30 cursor-pointer inline-block transition-all duration-300;
+  }
+  .btn-outline:hover {
+    @apply border-white -translate-y-0.5;
+  }
+}
