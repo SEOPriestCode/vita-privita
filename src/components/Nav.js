@@ -2,6 +2,7 @@
 
 import { useState, useRef, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { REGIONS } from "@/data/constants";
 import { useRegion } from "@/context/RegionContext";
@@ -37,7 +38,8 @@ export default function Nav() {
   return (
     <>
       <nav className={`fixed top-0 left-0 right-0 z-[100] h-[72px] flex items-center justify-between px-6 md:px-12 transition-all duration-400 ${scrolled ? "bg-black/90 backdrop-blur-md border-b border-border-purple" : "bg-transparent"}`}>
-        <Link href="/" className="font-serif text-2xl font-light tracking-[0.12em] text-purple cursor-pointer no-underline">
+        <Link href="/" className="flex items-center gap-3 font-serif text-xl font-light tracking-[0.12em] text-purple cursor-pointer no-underline">
+          <Image src={theme === "dark" ? "/vwhite.png" : "/vblack.png"} alt="Vita Privita Logo" width={40} height={40} className="h-10 w-auto" />
           Vita <span className="text-white italic">Privita</span>
         </Link>
         <ul className="hidden md:flex gap-8 items-center list-none m-0 p-0">

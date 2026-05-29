@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { REGIONS } from "@/data/constants";
 import { useRegion } from "@/context/RegionContext";
 
@@ -12,8 +13,9 @@ export default function Footer() {
     <footer className="bg-black pt-16 px-6 md:px-12 pb-8 border-t border-border-purple">
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12 mb-12 max-w-[1200px] mx-auto">
         <div className="lg:col-span-2">
-          <Link href="/" className="font-serif text-[1.4rem] font-light text-purple tracking-[0.12em] mb-4 block no-underline">
-            Vita <span className="text-white italic">Privita</span>
+          <Link href="/" className="flex items-center gap-3 font-serif text-lg font-light text-purple tracking-[0.12em] mb-4 no-underline">
+            <Image src="/vwhite.png" alt="Vita Privita Logo" width={48} height={48} className="h-12 w-auto" />
+            <span>Vita <span className="text-white italic">Privita</span></span>
           </Link>
           <p className="text-[0.8rem] text-muted leading-[1.8] max-w-[260px]">
             The premier outcall massage service bringing the highest standard of sensual and erotic bodywork to your sanctuary in {r.location}.
