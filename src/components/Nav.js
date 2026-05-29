@@ -5,9 +5,11 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { REGIONS } from "@/data/constants";
 import { useRegion } from "@/context/RegionContext";
+import { useTheme } from "@/context/ThemeContext";
 
 export default function Nav() {
   const { region, changeRegion, TREATMENTS } = useRegion();
+  const { theme, toggleTheme } = useTheme();
   const r = REGIONS[region];
   const opp = region === "NG" ? "UK" : "NG";
   const [dropOpen, setDropOpen] = useState(false);
@@ -93,6 +95,23 @@ export default function Nav() {
             </button>
           </li>
           <li>
+            <button 
+              className="w-8 h-8 border border-border-purple flex items-center justify-center text-purple bg-card hover:bg-purple-dim/10 rounded-full cursor-pointer transition-all duration-300 hover:scale-105"
+              onClick={toggleTheme}
+              aria-label="Toggle theme"
+            >
+              {theme === "dark" ? (
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-4 h-4">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M12 3v2.25m6.364.386-1.591 1.591M21 12h-2.25m-.386 6.364-1.591-1.591M12 18.75V21m-4.773-4.227-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0Z" />
+                </svg>
+              ) : (
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-4 h-4">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M21.752 15.002A9.72 9.72 0 0 1 18 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 0 0 3 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 0 0 9.002-5.998Z" />
+                </svg>
+              )}
+            </button>
+          </li>
+          <li>
             <a href={`https://api.whatsapp.com/send/?phone=${r.whatsapp}`} target="_blank" rel="noreferrer" className="text-[0.65rem] tracking-[0.2em] px-6 py-2.5 border border-purple text-purple no-underline transition-all hover:bg-purple hover:text-black uppercase rounded-full">
               Book Now
             </a>
@@ -117,8 +136,24 @@ export default function Nav() {
           <Link href="/gallery" onClick={() => setMobileOpen(false)} className="text-xl font-serif text-white no-underline py-3 border-b border-border-purple">Gallery</Link>
           <Link href="/events" onClick={() => setMobileOpen(false)} className="text-xl font-serif text-white no-underline py-3 border-b border-border-purple">Events</Link>
           <Link href="/contact" onClick={() => setMobileOpen(false)} className="text-xl font-serif text-white no-underline py-3 border-b border-border-purple">Contact</Link>
-          <a href={`https://api.whatsapp.com/send/?phone=${r.whatsapp}`} target="_blank" rel="noreferrer" className="text-xl font-serif text-purple no-underline py-3 mt-4">
-            Book Now →
+          <div className="flex gap-4 mt-6">
+            <button className="flex-1 flex items-center justify-center gap-2 text-[0.8rem] tracking-[0.12em] uppercase bg-card border border-border-purple text-purple py-3.5 cursor-pointer rounded-full" onClick={() => { changeRegion(opp); setMobileOpen(false); }}>
+              {r.flag} {r.label} ⇄
+            </button>
+            <button className="w-12 h-12 border border-border-purple flex items-center justify-center text-purple bg-card rounded-full cursor-pointer" onClick={() => { toggleTheme(); setMobileOpen(false); }} aria-label="Toggle theme">
+              {theme === "dark" ? (
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M12 3v2.25m6.364.386-1.591 1.591M21 12h-2.25m-.386 6.364-1.591-1.591M12 18.75V21m-4.773-4.227-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0Z" />
+                </svg>
+              ) : (
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M21.752 15.002A9.72 9.72 0 0 1 18 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 0 0 3 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 0 0 9.002-5.998Z" />
+                </svg>
+              )}
+            </button>
+          </div>
+          <a href={`https://api.whatsapp.com/send/?phone=${r.whatsapp}`} target="_blank" rel="noreferrer" className="text-center font-sans text-[0.8rem] tracking-[0.2em] py-3.5 bg-purple text-white no-underline uppercase rounded-full mt-2 font-medium">
+            Book Now
           </a>
         </div>
       )}

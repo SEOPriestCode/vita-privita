@@ -1,4 +1,5 @@
 import { RegionProvider } from "@/context/RegionContext";
+import { ThemeProvider } from "@/context/ThemeContext";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import RegionSelector from "@/components/RegionSelector";
@@ -16,19 +17,37 @@ export default function RootLayout({ children }) {
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function() {
+                try {
+                  var saved = localStorage.getItem('vp_theme');
+                  if (saved === 'light') {
+                    document.documentElement.classList.add('light');
+                  } else {
+                    document.documentElement.classList.remove('light');
+                  }
+                } catch (e) {}
+              })();
+            `
+          }}
+        />
       </head>
       <body className="antialiased font-light text-white bg-black">
-        <RegionProvider>
-          <RegionSelector />
-          <Nav />
-          <div className="pt-[72px]">
-            <Breadcrumbs />
-            <main className="min-h-screen">
-              {children}
-            </main>
-          </div>
-          <Footer />
-        </RegionProvider>
+        <ThemeProvider>
+          <RegionProvider>
+            <RegionSelector />
+            <Nav />
+            <div className="pt-[72px]">
+              <Breadcrumbs />
+              <main className="min-h-screen">
+                {children}
+              </main>
+            </div>
+            <Footer />
+          </RegionProvider>
+        </ThemeProvider>
       </body>
     </html>
   );

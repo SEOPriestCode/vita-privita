@@ -51,7 +51,7 @@ export default function HeroSlider() {
         </motion.div>
       </AnimatePresence>
 
-      <div className="absolute inset-0 bg-gradient-to-b from-[#0f071a]/40 via-transparent to-[#0f071a] z-10" />
+      <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-black z-10" />
       
       <div className="relative z-20 text-center max-w-[900px] px-8">
         <motion.span 

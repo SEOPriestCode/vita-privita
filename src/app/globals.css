@@ -1,16 +1,42 @@
 @import "tailwindcss";
 
+:root {
+  --bg-black: #0f071a;
+  --bg-deep: #150a24;
+  --bg-surface: #1f0f36;
+  --bg-card: #281447;
+  --border-purple: rgba(157, 78, 221, 0.25);
+  --accent-purple: #a855f7;
+  --accent-purple-light: #d8b4fe;
+  --accent-purple-dim: rgba(168, 85, 247, 0.35);
+  --text-white: #ffffff;
+  --text-muted: rgba(255, 255, 255, 0.65);
+}
+
+:root.light {
+  --bg-black: #ffffff;
+  --bg-deep: #ffffff;
+  --bg-surface: #faf9fb;
+  --bg-card: #f3eff7;
+  --border-purple: rgba(168, 85, 247, 0.12);
+  --accent-purple: #8b5cf6;
+  --accent-purple-light: #6d28d9;
+  --accent-purple-dim: rgba(139, 92, 246, 0.1);
+  --text-white: #110820;
+  --text-muted: rgba(17, 8, 32, 0.65);
+}
+
 @theme {
-  --color-black: #0f071a;
-  --color-deep: #150a24;
-  --color-surface: #1f0f36;
-  --color-card: #281447;
-  --color-border-purple: rgba(157, 78, 221, 0.25);
-  --color-purple: #a855f7;
-  --color-purple-light: #d8b4fe;
-  --color-purple-dim: rgba(168, 85, 247, 0.35);
-  --color-white: #ffffff;
-  --color-muted: rgba(255, 255, 255, 0.65);
+  --color-black: var(--bg-black);
+  --color-deep: var(--bg-deep);
+  --color-surface: var(--bg-surface);
+  --color-card: var(--bg-card);
+  --color-border-purple: var(--border-purple);
+  --color-purple: var(--accent-purple);
+  --color-purple-light: var(--accent-purple-light);
+  --color-purple-dim: var(--accent-purple-dim);
+  --color-white: var(--text-white);
+  --color-muted: var(--text-muted);
   
   --font-serif: "Cormorant Garamond", Georgia, serif;
   --font-sans: "Jost", sans-serif;
@@ -32,6 +58,11 @@
     font-weight: 300;
     -webkit-font-smoothing: antialiased;
     overflow-x: hidden;
+  }
+
+  /* Smooth transition for theme switching */
+  body, header, nav, main, footer, a, button, input, select, textarea, .glass-card, .glass-card-purple, .btn-primary, .btn-outline {
+    transition: background-color 0.4s cubic-bezier(0.4, 0, 0.2, 1), border-color 0.4s cubic-bezier(0.4, 0, 0.2, 1), color 0.4s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
   ::-webkit-scrollbar { width: 4px; }
@@ -89,11 +120,25 @@
   }
 
   .glass-card {
-    @apply bg-white/[0.03] backdrop-blur-xl border border-white/10 shadow-[0_8px_32px_0_rgba(0,0,0,0.37)];
+    @apply backdrop-blur-xl border border-white/10 shadow-[0_8px_32px_0_rgba(0,0,0,0.37)];
+    background-color: rgba(255, 255, 255, 0.03);
+  }
+  
+  :root.light .glass-card {
+    background-color: rgba(24, 9, 41, 0.04);
+    border-color: rgba(24, 9, 41, 0.08);
+    shadow: 0_8px_32px_0_rgba(142,45,226,0.08);
   }
   
   .glass-card-purple {
-    @apply bg-purple/[0.05] backdrop-blur-xl border border-purple/20 shadow-[0_8px_32px_0_rgba(168,85,247,0.1)];
+    @apply backdrop-blur-xl border border-purple/20 shadow-[0_8px_32px_0_rgba(168,85,247,0.1)];
+    background-color: rgba(168, 85, 247, 0.05);
+  }
+
+  :root.light .glass-card-purple {
+    background-color: rgba(142, 45, 226, 0.08);
+    border-color: rgba(142, 45, 226, 0.15);
+    shadow: 0_8px_32px_0_rgba(142,45,226,0.15);
   }
 
   /* 3D Flip Utilities */
