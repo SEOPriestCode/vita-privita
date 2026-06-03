@@ -13,9 +13,16 @@ export default function Footer() {
     <footer className="bg-black pt-16 px-6 md:px-12 pb-8 border-t border-border-purple">
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12 mb-12 max-w-[1200px] mx-auto">
         <div className="lg:col-span-2">
-          <Link href="/" className="flex items-center gap-3 font-serif text-lg font-light text-purple tracking-[0.12em] mb-4 no-underline">
-            <Image src="/vwhite.png" alt="Vita Privita Logo" width={48} height={48} className="h-12 w-auto" />
-            <span>Vita <span className="text-white italic">Privita</span></span>
+          <Link href="/" className="group flex items-center gap-3.5 mb-6 no-underline cursor-pointer">
+            <div className="relative flex items-center justify-center w-11 h-11 rounded-full bg-white/5 border border-purple-light/20 shadow-[0_0_15px_rgba(168,85,247,0.1)] transition-all duration-500 group-hover:scale-105 group-hover:border-purple group-hover:shadow-[0_0_20px_rgba(168,85,247,0.25)]">
+              <Image src="/vwhite.png" alt="Vita Privita Logo" width={32} height={32} className="h-7 w-auto object-contain transition-transform duration-700 group-hover:rotate-[360deg]" />
+            </div>
+            <div className="flex flex-col leading-none">
+              <span className="font-sans text-[0.55rem] font-semibold tracking-[0.35em] uppercase text-purple group-hover:text-purple-light transition-colors duration-300">DC</span>
+              <span className="font-serif text-lg tracking-[0.06em] text-white">
+                Vita <span className="font-sans font-light text-[0.85em] tracking-[0.05em] text-purple-light italic group-hover:text-white transition-colors duration-300">Privita</span>
+              </span>
+            </div>
           </Link>
           <p className="text-[0.8rem] text-muted leading-[1.8] max-w-[260px]">
             The premier outcall massage service bringing the highest standard of sensual and erotic bodywork to your sanctuary in {r.location}.
@@ -44,7 +51,7 @@ export default function Footer() {
           <ul className="list-none flex flex-col gap-3 p-0 m-0">
             <li><a href={`tel:${r.phone.replace(/\s+/g,'')}`} className="text-[0.8rem] text-muted no-underline transition-colors hover:text-purple">{r.phone}</a></li>
             <li><a href={`https://api.whatsapp.com/send/?phone=${r.whatsapp}`} target="_blank" rel="noreferrer" className="text-[0.8rem] text-muted no-underline transition-colors hover:text-purple">WhatsApp</a></li>
-            <li><a href="mailto:booking@vitaprivita.com" className="text-[0.8rem] text-muted no-underline transition-colors hover:text-purple">booking@vitaprivita.com</a></li>
+            <li><a href={`mailto:${r.email}`} className="text-[0.8rem] text-muted no-underline transition-colors hover:text-purple">{r.email}</a></li>
             <li className="text-[0.8rem] text-muted mt-2">{r.location}</li>
           </ul>
         </div>

@@ -38,9 +38,16 @@ export default function Nav() {
   return (
     <>
       <nav className={`fixed top-0 left-0 right-0 z-[100] h-[72px] flex items-center justify-between px-6 md:px-12 transition-all duration-400 ${scrolled ? "bg-black/90 backdrop-blur-md border-b border-border-purple" : "bg-transparent"}`}>
-        <Link href="/" className="flex items-center gap-3 font-serif text-xl font-light tracking-[0.12em] text-purple cursor-pointer no-underline">
-          <Image src={theme === "dark" ? "/vwhite.png" : "/vblack.png"} alt="Vita Privita Logo" width={40} height={40} className="h-10 w-auto" />
-          Vita <span className="text-white italic">Privita</span>
+        <Link href="/" className="group flex items-center gap-3.5 no-underline cursor-pointer">
+          <div className="relative flex items-center justify-center w-10 h-10 rounded-full bg-white/5 border border-purple-light/20 shadow-[0_0_15px_rgba(168,85,247,0.1)] transition-all duration-500 group-hover:scale-105 group-hover:border-purple group-hover:shadow-[0_0_20px_rgba(168,85,247,0.25)]">
+            <Image src={theme === "dark" ? "/vwhite.png" : "/vblack.png"} alt="Vita Privita Logo" width={28} height={28} className="h-6 w-auto object-contain transition-transform duration-700 group-hover:rotate-[360deg]" />
+          </div>
+          <div className="flex flex-col leading-none">
+            <span className="font-sans text-[0.55rem] font-semibold tracking-[0.35em] uppercase text-purple group-hover:text-purple-light transition-colors duration-300">DC</span>
+            <span className="font-serif text-lg tracking-[0.06em] text-white">
+              Vita <span className="font-sans font-light text-[0.85em] tracking-[0.05em] text-purple-light italic group-hover:text-white transition-colors duration-300">Privita</span>
+            </span>
+          </div>
         </Link>
         <ul className="hidden md:flex gap-8 items-center list-none m-0 p-0">
           <li>

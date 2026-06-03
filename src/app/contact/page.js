@@ -39,7 +39,7 @@ export default function ContactPage() {
               {[
                 { l: "WhatsApp", v: r.phone, h: `https://api.whatsapp.com/send/?phone=${r.whatsapp}`, i: "W" },
                 { l: "Direct Line", v: r.phone, h: `tel:${r.phone.replace(/\s+/g,'')}`, i: "P" },
-                { l: "Email", v: "booking@vitaprivita.com", h: "mailto:booking@vitaprivita.com", i: "E" }
+                { l: "Email", v: r.email, h: `mailto:${r.email}`, i: "E" }
               ].map((item, idx) => (
                 <motion.div 
                   key={item.l}
