@@ -3,9 +3,11 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 export default function TreatmentCard({ t, r, index }) {
   const [isFlipped, setIsFlipped] = useState(false);
+  const router = useRouter();
 
   useEffect(() => {
     // Random interval flip to create a dynamic "alive" feel
@@ -24,9 +26,10 @@ export default function TreatmentCard({ t, r, index }) {
 
   return (
     <div 
-      className="perspective-1000 h-[400px] w-full"
+      className="perspective-1000 h-[400px] w-full cursor-pointer"
       onMouseEnter={() => setIsFlipped(true)}
       onMouseLeave={() => setIsFlipped(false)}
+      onClick={() => router.push(`/treatments/${t.id}`)}
     >
       <motion.div
         className="relative w-full h-full preserve-3d"

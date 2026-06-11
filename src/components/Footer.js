@@ -28,9 +28,35 @@ export default function Footer() {
             The premier outcall massage service bringing the highest standard of sensual and erotic bodywork to your sanctuary in {r.location}.
           </p>
           <div className="flex gap-3 mt-6">
-            <a href="#" className="w-9 h-9 border border-border-purple flex items-center justify-center text-muted text-[0.75rem] no-underline transition-all hover:border-purple hover:text-purple rounded-full">Ig</a>
-            <a href="#" className="w-9 h-9 border border-border-purple flex items-center justify-center text-muted text-[0.75rem] no-underline transition-all hover:border-purple hover:text-purple rounded-full">Tw</a>
-            <a href="#" className="w-9 h-9 border border-border-purple flex items-center justify-center text-muted text-[0.75rem] no-underline transition-all hover:border-purple hover:text-purple rounded-full">Wa</a>
+            <a 
+              href="#" 
+              aria-label="Instagram"
+              className="w-9 h-9 border border-border-purple flex items-center justify-center text-muted no-underline transition-all duration-300 hover:border-[#E1306C] hover:text-[#E1306C] rounded-full hover:scale-105"
+            >
+              <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24" aria-hidden="true">
+                <path fillRule="evenodd" d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.051C.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z" clipRule="evenodd" />
+              </svg>
+            </a>
+            <a 
+              href="#" 
+              aria-label="Twitter X"
+              className="w-9 h-9 border border-border-purple flex items-center justify-center text-muted no-underline transition-all duration-300 hover:border-[#1DA1F2] hover:text-[#1DA1F2] rounded-full hover:scale-105"
+            >
+              <svg className="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+              </svg>
+            </a>
+            <a 
+              href={`https://api.whatsapp.com/send/?phone=${r.whatsapp}`} 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              aria-label="WhatsApp"
+              className="w-9 h-9 border border-border-purple flex items-center justify-center text-muted no-underline transition-all duration-300 hover:border-[#25D366] hover:text-[#25D366] rounded-full hover:scale-105"
+            >
+              <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24" aria-hidden="true">
+                <path fillRule="evenodd" d="M12.004 2C6.48 2 2.001 6.477 2.001 12c0 1.892.527 3.661 1.446 5.178L2 22l5.003-1.313a9.96 9.96 0 005.001 1.314c5.524 0 10.003-4.477 10.003-10S17.528 2 12.004 2zm5.727 13.918c-.244.693-1.22 1.252-1.69 1.292-.47.04-1.07.062-1.724-.148a7.994 7.994 0 01-3.341-2.1c-1.341-1.341-2.222-2.916-2.602-3.483-.38-.567-.62-1.072-.62-1.621 0-.55.289-.817.393-.925.104-.108.228-.162.34-.162a.602.602 0 01.378.118c.094.068.514 1.267.564 1.369.05.101.084.219.017.353-.067.135-.101.219-.202.337-.101.118-.212.264-.303.365-.101.112-.208.234-.09.438a6.388 6.388 0 001.332 1.656 5.753 5.753 0 001.956 1.206c.202.101.32.084.438-.05.118-.135.514-.596.648-.797.135-.202.269-.168.455-.101.185.068 1.178.556 1.38.657.202.101.337.152.387.236.05.084.05.488-.194 1.181z" clipRule="evenodd" />
+              </svg>
+            </a>
           </div>
         </div>
 
