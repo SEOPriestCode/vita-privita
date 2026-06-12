@@ -30,7 +30,7 @@ export default function EventsPage() {
           <div className="section-label">Curated Gatherings</div>
           <h2 className="section-title">Sensual <em>Socials</em></h2>
           <p className="section-body mb-16">
-            Beyond our private outcall services, we host a series of exclusive, high-end events and workshops designed for the discerning individual or couple in {r.location}.
+            Beyond our private outcall services, we host a series of exclusive, high-end events and workshops designed for the discerning individual or couple in {r.location} and in other locations, based on requests.
           </p>
         </ScrollReveal>
 
