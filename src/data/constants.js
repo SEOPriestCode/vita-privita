@@ -8,7 +8,7 @@ export const REGIONS = {
     email: "vitaprivitanigeria@gmail.com",
     location: "Lagos, Nigeria",
     timezone: "WAT (GMT+1)",
-    prices: { yoni: "70,000", nuru: "80,000", tantric: "90,000", lingam: "70,000", couples: "150,000", fourhand: "180,000" },
+    prices: { yoni: "70,000", nuru: "80,000", tantric: "90,000", lingam: "70,000", couples: "200,000", fourhand: "180,000", couplesYoni: "200,000", couplesNuru: "220,000", couplesTantric: "240,000", couplesLingam: "200,000" },
   },
   UK: {
     label: "United Kingdom",
@@ -19,7 +19,7 @@ export const REGIONS = {
     email: "dcvitaprivita@gmail.com",
     location: "London, UK",
     timezone: "GMT / BST",
-    prices: { yoni: "180", nuru: "200", tantric: "220", lingam: "180", couples: "380", fourhand: "450" },
+    prices: { yoni: "180", nuru: "200", tantric: "220", lingam: "180", couples: "380", fourhand: "450", couplesYoni: "360", couplesNuru: "400", couplesTantric: "440", couplesLingam: "360" },
   },
 };
 
@@ -57,7 +57,7 @@ export const TREATMENTS = [
     long: "Tantric massage is an ancient art form that transcends ordinary sensual experience. Drawing from tantric traditions, this treatment involves slow, deliberate caressing, teasing, and stroking of the entire body with warm aromatic oils — from head to toe. The masseur or masseuse employs a gliding touch that makes every nerve ending tremble with exquisite pleasure. Unlike purely physical treatments, tantric massage may incorporate mindful elements such as conscious breathing techniques, eye contact, energetic awareness, and deep relaxation practices. The result is an elevated state of consciousness, heightened libido, and a profound sense of connection with your own body.",
     benefits: ["Increases libido and conscious arousal", "Deeper self-connection and intimacy", "Incorporates breathwork and mindfulness", "Whole-body erotic bliss experience", "Addresses sacred spot with expert technique"],
     priceKey: "tantric",
-    duration: "90–120 min",
+    duration: "60–120 min",
     emoji: "❋",
   },
   {
