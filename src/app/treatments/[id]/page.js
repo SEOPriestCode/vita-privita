@@ -7,6 +7,7 @@ import { REGIONS } from "@/data/constants";
 import CtaBanner from "@/components/CtaBanner";
 import ScrollReveal from "@/components/ScrollReveal";
 import { motion } from "framer-motion";
+import Image from "next/image";
 
 export default function TreatmentPage({ params }) {
   // `params` in Next.js 15 app router might be a Promise for dynamic routes
@@ -17,6 +18,16 @@ export default function TreatmentPage({ params }) {
   const r = REGIONS[region];
 
   const [t, setT] = useState(null);
+
+  // Map treatment IDs to appropriate images (randomly assigned from numbered jpg files)
+  const treatmentImages = {
+    yoni: "/images/02.jpg",
+    nuru: "/images/03.jpg",
+    tantric: "/images/04.jpg",
+    lingam: "/images/05.jpg",
+    couples: "/images/hero_2.png",
+    fourhand: "/images/06.jpg"
+  };
 
   useEffect(() => {
     const found = TREATMENTS.find(tr => tr.id === treatmentId);
@@ -33,7 +44,7 @@ export default function TreatmentPage({ params }) {
     <div className="page-fade">
       <section className="h-[50vh] min-h-[400px] bg-deep flex items-end px-6 md:px-12 pb-12 relative overflow-hidden border-b border-border-purple">
         <div className="absolute inset-0 z-0">
-          <img src="/images/hero_1.png" alt={t.name} className="w-full h-full object-cover opacity-20" />
+          <Image src={treatmentImages[t.id] || "/images/hero_1.png"} alt={t.name} fill className="object-cover opacity-20" onContextMenu={(e) => e.preventDefault()} draggable={false} />
           <div className="absolute inset-0 bg-gradient-to-t from-deep via-deep/40 to-transparent" />
         </div>
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_30%_60%,rgba(168,85,247,0.08)_0%,transparent_60%)]" />
@@ -95,7 +106,7 @@ export default function TreatmentPage({ params }) {
           <ScrollReveal direction="left">
             <div className="relative">
               <div className="w-full aspect-[3/4] flex items-center justify-center font-serif text-[4rem] text-purple-dim italic relative overflow-hidden glass-card-purple rounded-3xl p-3">
-                <img src="/images/hero_2.png" alt={t.name} className="absolute inset-0 w-full h-full object-cover opacity-30 rounded-2xl" />
+                <Image src={treatmentImages[t.id] || "/images/hero_2.png"} alt={t.name} fill className="object-cover opacity-30 rounded-2xl" onContextMenu={(e) => e.preventDefault()} draggable={false} />
                 <div className="absolute inset-6 border border-white/10 pointer-events-none rounded-xl" />
                 <span className="relative z-10">{t.emoji}</span>
               </div>

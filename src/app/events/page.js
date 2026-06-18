@@ -45,7 +45,7 @@ export default function EventsPage() {
               className="group glass-card-purple p-6 rounded-3xl transition-all duration-500 hover:-translate-y-2"
             >
               <div className="relative aspect-[16/9] overflow-hidden rounded-2xl mb-6">
-                <img src={e.image} alt={e.title} className="w-full h-full object-cover opacity-60 group-hover:opacity-80 transition-all duration-700 group-hover:scale-105" />
+                <img src={e.image} alt={e.title} className="w-full h-full object-cover opacity-60 group-hover:opacity-80 transition-all duration-700 group-hover:scale-105" onContextMenu={(e) => e.preventDefault()} draggable={false} />
                 <div className="absolute top-4 right-4 bg-purple text-black text-[0.6rem] tracking-[0.2em] uppercase px-4 py-2 rounded-full font-medium z-10">
                   {e.date}
                 </div>

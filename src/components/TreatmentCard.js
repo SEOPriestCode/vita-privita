@@ -4,10 +4,21 @@ import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import Image from "next/image";
 
 export default function TreatmentCard({ t, r, index }) {
   const [isFlipped, setIsFlipped] = useState(false);
   const router = useRouter();
+
+  // Map treatment IDs to appropriate images (randomly assigned from numbered jpg files)
+  const treatmentImages = {
+    yoni: "/images/02.jpg",
+    nuru: "/images/03.jpg",
+    tantric: "/images/04.jpg",
+    lingam: "/images/05.jpg",
+    couples: "/images/hero_2.png",
+    fourhand: "/images/06.jpg"
+  };
 
   useEffect(() => {
     // Random interval flip to create a dynamic "alive" feel
@@ -39,15 +50,29 @@ export default function TreatmentCard({ t, r, index }) {
       >
         {/* FRONT */}
         <div className="absolute inset-0 backface-hidden w-full h-full">
-          <Link href={`/treatments/${t.id}`} className="block h-full bg-surface p-10 relative overflow-hidden transition-all duration-400 hover:bg-card no-underline border border-border-purple rounded-3xl">
-            <div className="absolute inset-0 bg-gradient-to-br from-purple/5 to-transparent opacity-0 transition-opacity duration-400 group-hover:opacity-100" />
-            <div className="font-serif text-[3.5rem] font-light text-border-purple leading-none mb-4">{t.num}</div>
-            <h3 className="font-serif text-2xl font-normal text-white mb-3 group-hover:text-purple transition-colors">{t.name}</h3>
-            <p className="text-[0.8rem] text-muted leading-[1.8] mb-6">{t.short}</p>
-            <div className="text-[0.65rem] tracking-[0.2em] uppercase text-purple">
-              From {r.currency}{t.price}
+          <Link href={`/treatments/${t.id}`} className="block h-full bg-surface relative overflow-hidden transition-all duration-400 hover:bg-card no-underline border border-border-purple rounded-3xl">
+            <div className="absolute inset-0">
+              <Image
+                src={treatmentImages[t.id] || "/images/hero_1.png"}
+                alt={t.name}
+                fill
+                className="object-cover opacity-40"
+                onContextMenu={(e) => e.preventDefault()}
+                draggable={false}
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-surface via-surface/50 to-transparent" />
             </div>
-            <span className="absolute bottom-8 right-8 text-xl text-purple-dim">→</span>
+            <div className="relative z-10 p-10 h-full flex flex-col">
+              <div className="font-serif text-[3.5rem] font-light text-border-purple leading-none mb-4">{t.num}</div>
+              <h3 className="font-serif text-2xl font-normal text-white mb-3 group-hover:text-purple transition-colors">{t.name}</h3>
+              <p className="text-[0.8rem] text-muted leading-[1.8] mb-6">{t.short}</p>
+              <div className="mt-auto">
+                <div className="text-[0.65rem] tracking-[0.2em] uppercase text-purple">
+                  From {r.currency}{t.price}
+                </div>
+                <span className="absolute bottom-8 right-8 text-xl text-purple-dim">→</span>
+              </div>
+            </div>
           </Link>
         </div>
 

@@ -63,7 +63,7 @@ export default function HomePage() {
             <ScrollReveal direction="left">
               <div className="relative">
                 <div className="w-full aspect-[3/4] overflow-hidden relative rounded-3xl glass-card-purple p-2 group">
-                  <img src="/images/about.png" alt="About Vita Privita" className="w-full h-full object-cover rounded-[1.25rem] opacity-80 group-hover:scale-105 transition-transform duration-1000" />
+                  <img src="/images/about.png" alt="About Vita Privita" className="w-full h-full object-cover rounded-[1.25rem] opacity-80 group-hover:scale-105 transition-transform duration-1000" onContextMenu={(e) => e.preventDefault()} draggable={false} />
                   <div className="absolute inset-5 border border-white/10 rounded-[1rem] pointer-events-none" />
                 </div>
                 <motion.div 

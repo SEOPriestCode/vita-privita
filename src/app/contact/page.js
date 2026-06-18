@@ -102,8 +102,8 @@ export default function ContactPage() {
                   <div className="flex flex-col gap-2">
                     <label className="text-[0.65rem] tracking-[0.2em] uppercase text-purple">Service Interest</label>
                     <div className="relative">
-                      <select className="bg-card border border-border-purple text-white font-sans text-[0.85rem] px-4 py-3.5 outline-none transition-colors focus:border-purple w-full cursor-pointer appearance-none rounded-xl">
-                        <option value="" disabled selected>Select a treatment</option>
+                      <select defaultValue="" className="bg-card border border-border-purple text-white font-sans text-[0.85rem] px-4 py-3.5 outline-none transition-colors focus:border-purple w-full cursor-pointer appearance-none rounded-xl">
+                        <option value="" disabled>Select a treatment</option>
                         <option value="yoni" className="bg-card">Yoni Massage</option>
                         <option value="nuru" className="bg-card">Nuru Massage</option>
                         <option value="tantric" className="bg-card">Tantric Massage</option>

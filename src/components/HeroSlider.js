@@ -8,14 +8,24 @@ import { REGIONS } from "@/data/constants";
 
 const slides = [
   {
-    image: "/images/hero_1.png",
+    image: "/images/hero_3.png.jpg",
     title: "The Art of Sensual Pleasure",
     subtitle: "Professional · Discreet · Confidential",
   },
   {
-    image: "/images/hero_2.png",
+    image: "/images/hero_4.png.jpg",
     title: "Divine Touch & Healing",
     subtitle: "Tailored to your deepest desires",
+  },
+  {
+    image: "/images/hero_5.png.jpg",
+    title: "Sacred Bodywork",
+    subtitle: "Awaken your senses completely",
+  },
+  {
+    image: "/images/hero_2.png",
+    title: "Ultimate Relaxation",
+    subtitle: "Experience pure bliss",
   }
 ];
 
@@ -47,6 +57,8 @@ export default function HeroSlider() {
             src={slides[current].image}
             alt="Hero Background"
             className="w-full h-full object-cover"
+            onContextMenu={(e) => e.preventDefault()}
+            draggable={false}
           />
         </motion.div>
       </AnimatePresence>
