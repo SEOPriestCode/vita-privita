@@ -38,7 +38,7 @@ export default function Footer() {
               </svg>
             </a>
             <a 
-              href="#" 
+              href="https://x.com/vitaprivitadc" 
               aria-label="Twitter X"
               className="w-9 h-9 border border-border-purple flex items-center justify-center text-muted no-underline transition-all duration-300 hover:border-[#1DA1F2] hover:text-[#1DA1F2] rounded-full hover:scale-105"
             >
