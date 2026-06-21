@@ -1,11 +1,14 @@
 "use client";
 
 import { useRegion } from "@/context/RegionContext";
+import { useTheme } from "@/context/ThemeContext";
 import { REGIONS } from "@/data/constants";
 import { useState } from "react";
+import Image from "next/image";
 
 export default function ChatWidget() {
   const { region } = useRegion();
+  const { theme } = useTheme();
   const r = REGIONS[region];
   const [isOpen, setIsOpen] = useState(false);
 
@@ -18,13 +21,13 @@ export default function ChatWidget() {
           className="w-16 h-16 rounded-full bg-gradient-to-br from-purple-500 to-purple-700 text-white shadow-lg hover:shadow-purple-500/50 transition-all duration-300 hover:scale-110 flex items-center justify-center group"
           aria-label="Chat with us"
         >
-          <svg
-            className="w-8 h-8 group-hover:scale-110 transition-transform"
-            fill="currentColor"
-            viewBox="0 0 24 24"
-          >
-            <path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H6l-2 2V4h16v12z"/>
-          </svg>
+          <Image
+            src={theme === "dark" ? "/vwhite.png" : "/vblack.png"}
+            alt="Vita Privita"
+            width={32}
+            height={32}
+            className="w-8 h-8 object-contain"
+          />
         </button>
       )}
 
@@ -33,9 +36,18 @@ export default function ChatWidget() {
         <div className="bg-card border border-border-purple rounded-2xl shadow-2xl w-80 overflow-hidden animate-in slide-in-from-bottom-10 fade-in duration-300">
           {/* Header */}
           <div className="bg-gradient-to-r from-purple-500 to-purple-700 p-4 flex items-center justify-between">
-            <div>
-              <h3 className="text-white font-serif text-lg">Chat with Us</h3>
-              <p className="text-white/80 text-xs">We typically reply within minutes</p>
+            <div className="flex items-center gap-3">
+              <Image
+                src={theme === "dark" ? "/vwhite.png" : "/vblack.png"}
+                alt="Vita Privita"
+                width={40}
+                height={40}
+                className="w-10 h-10 object-contain"
+              />
+              <div>
+                <h3 className="text-white font-serif text-lg">Vita Privita</h3>
+                <p className="text-white/80 text-xs">Let&apos;s Talk</p>
+              </div>
             </div>
             <button
               onClick={() => setIsOpen(false)}
