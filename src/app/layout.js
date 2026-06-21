@@ -4,6 +4,7 @@ import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import RegionSelector from "@/components/RegionSelector";
 import Breadcrumbs from "@/components/Breadcrumbs";
+import ChatWidget from "@/components/ChatWidget";
 import "./globals.css";
 
 export const metadata = {
@@ -46,6 +47,7 @@ export default function RootLayout({ children }) {
               </main>
             </div>
             <Footer />
+            <ChatWidget />
           </RegionProvider>
         </ThemeProvider>
       </body>
