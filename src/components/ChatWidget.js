@@ -1,111 +1,69 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useRegion } from "@/context/RegionContext";
+import { REGIONS } from "@/data/constants";
+import { useState } from "react";
 
 export default function ChatWidget() {
-  const [isWidgetLoaded, setIsWidgetLoaded] = useState(false);
+  const { region } = useRegion();
+  const r = REGIONS[region];
+  const [isOpen, setIsOpen] = useState(false);
 
-  useEffect(() => {
-    // Load Tawk.to script
-    const loadTawkScript = () => {
-      if (typeof window !== "undefined" && !window.Tawk_API) {
-        window.Tawk_API = window.Tawk_API || {};
-        window.Tawk_LoadStart = new Date();
+  return (
+    <div className="fixed bottom-6 right-6 z-50">
+      {/* Chat Button */}
+      {!isOpen && (
+        <button
+          onClick={() => setIsOpen(true)}
+          className="w-16 h-16 rounded-full bg-gradient-to-br from-purple-500 to-purple-700 text-white shadow-lg hover:shadow-purple-500/50 transition-all duration-300 hover:scale-110 flex items-center justify-center group"
+          aria-label="Chat with us"
+        >
+          <svg
+            className="w-8 h-8 group-hover:scale-110 transition-transform"
+            fill="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H6l-2 2V4h16v12z"/>
+          </svg>
+        </button>
+      )}
 
-        const script = document.createElement("script");
-        script.async = true;
-        script.src = "https://embed.tawk.to/63763889daff0e1306d7ed7d/default";
-        script.charset = "UTF-8";
-        script.setAttribute("crossorigin", "*");
+      {/* Chat Window */}
+      {isOpen && (
+        <div className="bg-card border border-border-purple rounded-2xl shadow-2xl w-80 overflow-hidden animate-in slide-in-from-bottom-10 fade-in duration-300">
+          {/* Header */}
+          <div className="bg-gradient-to-r from-purple-500 to-purple-700 p-4 flex items-center justify-between">
+            <div>
+              <h3 className="text-white font-serif text-lg">Chat with Us</h3>
+              <p className="text-white/80 text-xs">We typically reply within minutes</p>
+            </div>
+            <button
+              onClick={() => setIsOpen(false)}
+              className="text-white/80 hover:text-white transition-colors"
+              aria-label="Close chat"
+            >
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+          </div>
 
-        const firstScript = document.getElementsByTagName("script")[0];
-        firstScript.parentNode.insertBefore(script, firstScript);
-
-        script.onload = () => {
-          setIsWidgetLoaded(true);
-        };
-      }
-    };
-
-    loadTawkScript();
-
-    // Customize Tawk.to widget appearance and behavior
-    const customizeWidget = () => {
-      if (window.Tawk_API) {
-        window.Tawk_API.onLoad = function() {
-          setIsWidgetLoaded(true);
-          
-          // Smart display: hide on mobile initially, show on desktop
-          if (window.innerWidth < 768) {
-            window.Tawk_API.hideWidget();
-          }
-
-          // Set visitor info if available
-          window.Tawk_API.visitor = {
-            name: '',
-            email: ''
-          };
-        };
-
-        // Smart scroll-based visibility
-        let lastScrollY = window.scrollY;
-        let scrollTimeout;
-
-        const handleScroll = () => {
-          const currentScrollY = window.scrollY;
-          const scrollDirection = currentScrollY > lastScrollY ? 'down' : 'up';
-          
-          clearTimeout(scrollTimeout);
-          
-          scrollTimeout = setTimeout(() => {
-            if (window.Tawk_API) {
-              // Show widget when scrolling up or after scrolling down 500px
-              if (scrollDirection === 'up' || currentScrollY > 500) {
-                window.Tawk_API.showWidget();
-              } else if (currentScrollY < 300 && window.innerWidth < 768) {
-                window.Tawk_API.hideWidget();
-              }
-            }
-          }, 100);
-
-          lastScrollY = currentScrollY;
-        };
-
-        // Handle window resize
-        const handleResize = () => {
-          if (window.Tawk_API) {
-            if (window.innerWidth >= 768) {
-              window.Tawk_API.showWidget();
-            } else {
-              window.Tawk_API.hideWidget();
-            }
-          }
-        };
-
-        // Add event listeners
-        window.addEventListener("scroll", handleScroll, { passive: true });
-        window.addEventListener("resize", handleResize);
-
-        return () => {
-          window.removeEventListener("scroll", handleScroll);
-          window.removeEventListener("resize", handleResize);
-          clearTimeout(scrollTimeout);
-        };
-      }
-    };
-
-    // Wait for Tawk_API to be available
-    const checkTawkAPI = setInterval(() => {
-      if (window.Tawk_API) {
-        clearInterval(checkTawkAPI);
-        customizeWidget();
-      }
-    }, 100);
-
-    return () => {
-      clearInterval(checkTawkAPI);
-    };
-  }, []);
-
-  return null; // This component doesn't render anything visible
+          {/* Content */}
+          <div className="p-4">
+            <p className="text-muted text-sm mb-4 leading-relaxed">
+              Have questions about our services? Chat with us directly on WhatsApp for instant responses.
+            </p>
+            <a
+              href={`https://api.whatsapp.com/send/?phone=${r.whatsapp}&text=Hello, I'm interested in your services`}
+              target="_blank"
+              rel="noreferrer"
+              className="btn-primary w-full text-center block"
+            >
+              Chat on WhatsApp
+            </a>
+          </div>
+        </div>
+      )}
+    </div>
+  );
 }
