@@ -13,22 +13,27 @@ export default function ChatWidget() {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <div className="fixed bottom-4 sm:bottom-6 right-4 sm:right-6 z-50">
+    <div className="fixed bottom-4 sm:bottom-6 right-4 sm:right-6 z-50 flex flex-col items-end gap-2">
       {/* Chat Button */}
       {!isOpen && (
-        <button
-          onClick={() => setIsOpen(true)}
-          className="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-gradient-to-br from-purple-500 to-purple-700 text-white shadow-lg hover:shadow-purple-500/50 transition-all duration-300 hover:scale-110 flex items-center justify-center group"
-          aria-label="Chat with us"
-        >
-          <Image
-            src={theme === "dark" ? "/vwhite.png" : "/vblack.png"}
-            alt="Vita Privita"
-            width={32}
-            height={32}
-            className="w-7 h-7 sm:w-8 sm:h-8 object-contain"
-          />
-        </button>
+        <>
+          <div className="bg-card border border-border-purple px-3 py-1.5 rounded-full shadow-lg animate-bounce">
+            <span className="text-[0.65rem] tracking-[0.2em] uppercase text-purple font-medium">Let&apos;s Talk</span>
+          </div>
+          <button
+            onClick={() => setIsOpen(true)}
+            className="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-gradient-to-br from-purple-500 to-purple-700 text-white shadow-lg hover:shadow-purple-500/50 transition-all duration-300 hover:scale-110 flex items-center justify-center group"
+            aria-label="Chat with us"
+          >
+            <Image
+              src={theme === "dark" ? "/vwhite.png" : "/vblack.png"}
+              alt="Vita Privita"
+              width={32}
+              height={32}
+              className="w-7 h-7 sm:w-8 sm:h-8 object-contain"
+            />
+          </button>
+        </>
       )}
 
       {/* Chat Window */}
