@@ -37,7 +37,7 @@ export default function TreatmentCard({ t, r, index }) {
 
   return (
     <div 
-      className="perspective-1000 h-[400px] w-full cursor-pointer"
+      className="perspective-1000 h-[350px] sm:h-[400px] w-full cursor-pointer"
       onMouseEnter={() => setIsFlipped(true)}
       onMouseLeave={() => setIsFlipped(false)}
       onClick={() => router.push(`/treatments/${t.id}`)}
@@ -62,10 +62,10 @@ export default function TreatmentCard({ t, r, index }) {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-surface via-surface/50 to-transparent" />
             </div>
-            <div className="relative z-10 p-10 h-full flex flex-col">
-              <div className="font-serif text-[3.5rem] font-light text-border-purple leading-none mb-4">{t.num}</div>
-              <h3 className="font-serif text-2xl font-normal text-white mb-3 group-hover:text-purple transition-colors">{t.name}</h3>
-              <p className="text-[0.8rem] text-muted leading-[1.8] mb-6">{t.short}</p>
+            <div className="relative z-10 p-6 sm:p-10 h-full flex flex-col">
+              <div className="font-serif text-[2.5rem] sm:text-[3.5rem] font-light text-border-purple leading-none mb-4">{t.num}</div>
+              <h3 className="font-serif text-xl sm:text-2xl font-normal text-white mb-3 group-hover:text-purple transition-colors">{t.name}</h3>
+              <p className="text-[0.75rem] sm:text-[0.8rem] text-muted leading-[1.8] mb-6">{t.short}</p>
               <div className="mt-auto">
                 <div className="text-[0.65rem] tracking-[0.2em] uppercase text-purple">
                   From {r.currency}{t.price}
@@ -78,14 +78,14 @@ export default function TreatmentCard({ t, r, index }) {
 
         {/* BACK */}
         <div className="absolute inset-0 backface-hidden w-full h-full rotate-y-180">
-          <Link href={`/treatments/${t.id}`} className="block h-full bg-card p-10 relative overflow-hidden no-underline border border-purple/30 rounded-3xl glass-card-purple">
+          <Link href={`/treatments/${t.id}`} className="block h-full bg-card p-6 sm:p-10 relative overflow-hidden no-underline border border-purple/30 rounded-3xl glass-card-purple">
             <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_50%,rgba(168,85,247,0.1)_0%,transparent_70%)]" />
             <div className="relative z-10 h-full flex flex-col">
-              <div className="text-[2.5rem] mb-4">{t.emoji}</div>
-              <h3 className="font-serif text-xl text-purple mb-4 uppercase tracking-wider">{t.name} Highlights</h3>
+              <div className="text-[2rem] sm:text-[2.5rem] mb-4">{t.emoji}</div>
+              <h3 className="font-serif text-lg sm:text-xl text-purple mb-4 uppercase tracking-wider">{t.name} Highlights</h3>
               <ul className="list-none p-0 m-0 flex flex-col gap-3">
                 {t.benefits.slice(0, 3).map((b, i) => (
-                  <li key={i} className="text-[0.7rem] text-white/80 flex items-start gap-3 leading-relaxed">
+                  <li key={i} className="text-[0.65rem] sm:text-[0.7rem] text-white/80 flex items-start gap-3 leading-relaxed">
                     <span className="text-purple mt-1">✦</span>
                     {b}
                   </li>

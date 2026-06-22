@@ -42,7 +42,7 @@ export default function TreatmentPage({ params }) {
 
   return (
     <div className="page-fade">
-      <section className="h-[50vh] min-h-[400px] bg-deep flex items-end px-6 md:px-12 pb-12 relative overflow-hidden border-b border-border-purple">
+      <section className="h-[40vh] sm:h-[50vh] min-h-[350px] sm:min-h-[400px] bg-deep flex items-end px-6 md:px-12 pb-8 sm:pb-12 relative overflow-hidden border-b border-border-purple">
         <div className="absolute inset-0 z-0">
           <Image src={treatmentImages[t.id] || "/images/hero_1.png"} alt={t.name} fill className="object-cover opacity-20" onContextMenu={(e) => e.preventDefault()} draggable={false} />
           <div className="absolute inset-0 bg-gradient-to-t from-deep via-deep/40 to-transparent" />
@@ -55,8 +55,8 @@ export default function TreatmentPage({ params }) {
         </ScrollReveal>
       </section>
 
-      <section className="py-24 px-6 md:px-12 max-w-[1200px] mx-auto">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-20 items-start">
+      <section className="py-16 sm:py-24 px-6 md:px-12 max-w-[1200px] mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-20 items-start">
           <ScrollReveal>
             <div>
               <div className="section-label">Treatment Details</div>
@@ -82,14 +82,14 @@ export default function TreatmentPage({ params }) {
                 ))}
               </ul>
 
-              <div className="bg-card border border-border-purple p-8 mt-10 flex items-center justify-between rounded-2xl">
-                <div>
+              <div className="bg-card border border-border-purple p-6 sm:p-8 mt-10 flex flex-col sm:flex-row items-center justify-between gap-4 rounded-2xl">
+                <div className="text-center sm:text-left">
                   <div className="text-[0.65rem] tracking-[0.2em] uppercase text-muted mb-2">Starting From</div>
-                  <div className="font-serif text-[2.5rem] font-light text-purple leading-none">
+                  <div className="font-serif text-[2rem] sm:text-[2.5rem] font-light text-purple leading-none">
                     {r.currency}{t.price}
                   </div>
                 </div>
-                <div className="text-right">
+                <div className="text-center sm:text-right">
                   <div className="text-[0.65rem] tracking-[0.2em] uppercase text-muted mb-2">Duration</div>
                   <div className="text-[0.8rem] text-white">{t.duration}</div>
                 </div>
@@ -105,9 +105,9 @@ export default function TreatmentPage({ params }) {
 
           <ScrollReveal direction="left">
             <div className="relative">
-              <div className="w-full aspect-[3/4] flex items-center justify-center font-serif text-[4rem] text-purple-dim italic relative overflow-hidden glass-card-purple rounded-3xl p-3">
+              <div className="w-full aspect-[3/4] sm:aspect-[4/5] flex items-center justify-center font-serif text-[3rem] sm:text-[4rem] text-purple-dim italic relative overflow-hidden glass-card-purple rounded-3xl p-3">
                 <Image src={treatmentImages[t.id] || "/images/hero_2.png"} alt={t.name} fill className="object-cover opacity-30 rounded-2xl" onContextMenu={(e) => e.preventDefault()} draggable={false} />
-                <div className="absolute inset-6 border border-white/10 pointer-events-none rounded-xl" />
+                <div className="absolute inset-4 sm:inset-6 border border-white/10 pointer-events-none rounded-xl" />
                 <span className="relative z-10">{t.emoji}</span>
               </div>
             </div>

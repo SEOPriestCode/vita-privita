@@ -42,7 +42,7 @@ export default function HeroSlider() {
   }, []);
 
   return (
-    <section className="relative h-[90vh] flex items-center justify-center overflow-hidden">
+    <section className="relative h-[70vh] md:h-[90vh] flex items-center justify-center overflow-hidden">
       <AnimatePresence mode="wait">
         <motion.div
           key={current}
@@ -65,7 +65,7 @@ export default function HeroSlider() {
 
       <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-black z-10" />
       
-      <div className="relative z-20 text-center max-w-[900px] px-8">
+      <div className="relative z-20 text-center max-w-[900px] px-6 md:px-8">
         <motion.span 
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}

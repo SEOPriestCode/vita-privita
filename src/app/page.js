@@ -23,9 +23,9 @@ export default function HomePage() {
       <OutcallStrip />
 
       {/* ABOUT PREVIEW */}
-      <section className="py-24 px-12 overflow-hidden">
+      <section className="py-16 sm:py-24 px-6 sm:px-12 overflow-hidden">
         <div className="max-w-[1200px] mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-20 items-center">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-20 items-center">
             <ScrollReveal>
               <div>
                 <div className="section-label">About Vita Privita</div>
@@ -85,7 +85,7 @@ export default function HomePage() {
       <div className="divider" />
 
       {/* SERVICES */}
-      <section className="py-24 px-12">
+      <section className="py-16 sm:py-24 px-6 sm:px-12">
         <div className="max-w-[1200px] mx-auto">
           <ScrollReveal>
             <div className="section-label">Our Treatments</div>
